@@ -37,7 +37,6 @@ def start_with_options(core:VACore, manifest:dict):
     cmdoptions = manifest["options"]["cmds"]
     print(cmdoptions)
     for cmd in cmdoptions.keys():
-        cmd = cmd.lower()
         cmds[cmd]  = (open_program, cmdoptions[cmd])
     manifest["commands"] = cmds
     return manifest
