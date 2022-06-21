@@ -1,5 +1,5 @@
 from vacore import VACore
-
+import subprocess 
 # функция на старте
 def start(core:VACore):
     manifest = {
@@ -42,12 +42,9 @@ def start_with_options(core:VACore, manifest:dict):
     return manifest
 
 def open_program(core:VACore, phrase:str, param: str):
-    core.play_voice_assistant_speech("Открываю приложение")
-
-    import os
-    path_program = param
     try:
-        os.system(f'start explorer shell:appsfolder\\{path_program}')
+        # os.system(f'start explorer shell:appsfolder\\{path_program}')
+        subprocess.run(f'start shell:appsfolder\\"{param}"', shell=True)
     except Exception:
         core.play_voice_assistant_speech("Ошибка при открытии программы")
   
